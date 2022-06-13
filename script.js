@@ -1,4 +1,28 @@
 // Assignment code here
+var criteria = {
+  promptConfirm: false,
+  characterLimit: 8,
+  upperCase: true,
+  lowerCase: true,
+  numbers: true,
+  specialCharacters: true,
+};
+
+var characters = {
+  letter: "abcdefghijklmnopqrstuvwxyz",
+  number: "0123456789",
+  special: "!#$%&()*+,-./:;<=>?@^_`{|}~",
+};
+
+var randomNum = function (min,max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+var randomCharacter = function (charactersProperty) {
+  randomPickedCharacter = charactersProperty.charAt(randomNum(0,charactersProperty.length));
+  return randomPickedCharacter;
+};
+
 var setCharacterLimit = function () {
   criteria.characterLimit = window.prompt("What's your desired character limit?\n[Length must be at least 8 characters but no more than 128 characters]");
   criteria.characterLimit = Number(criteria.characterLimit);
@@ -33,8 +57,52 @@ var promptCriteria = function () {
   };
 }
 
-
-
+var generatePassword = function () {
+  promptCriteria();
+  if (criteria.promptConfirm) {
+    password = "";
+    while (password.length < criteria.characterLimit) {
+      switch (randomNum(0,3)) {
+        case 0:
+          if (criteria.lowerCase) {
+            password = password + randomCharacter(characters.letter);
+            break;
+          } else {
+            break;
+          }
+        case 1:
+          if (criteria.upperCase) {
+            password = password + randomCharacter(characters.letter.toUpperCase());
+            break;
+          } else {
+            break;
+          }
+        case 2:
+          if (criteria.numbers) {
+            password = password + randomCharacter(characters.number);
+            break;
+          } else {
+            break;
+          }
+        case 3:
+          if (criteria.specialCharacters) {
+            password = password + randomCharacter(characters.special);
+            break;
+          } else {
+            break;
+          } 
+        default:
+          window.alert("Incorrect!");
+          break;
+      }
+    }
+    return password;
+  } else {
+    window.alert("Try again later!");
+    password = "hello";
+    return password;
+  }
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
