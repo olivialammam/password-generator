@@ -1,31 +1,4 @@
 // Assignment code here
-var criteria = {
-  promptConfirm: false,
-  characterLimit: 8,
-  upperCase: true,
-  lowerCase: true,
-  numbers: true,
-  specialCharacters: true,
-};
-
-
-var characters = {
-  letter: "abcdefghijklmnopqrstuvwxyz",
-  number: "0123456789",
-  special: "!#$%&()*+,-./:;<=>?@^_`{|}~",
-};
-
-
-var randomNum = function (min,max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-
-var randomCharacter = function (charactersProperty) {
-  randomPickedCharacter = charactersProperty.charAt(randomNum(0,charactersProperty.length));
-  return randomPickedCharacter;
-};
-
 var setCharacterLimit = function () {
   criteria.characterLimit = window.prompt("What's your desired character limit?\n[Length must be at least 8 characters but no more than 128 characters]");
   criteria.characterLimit = Number(criteria.characterLimit);
@@ -37,15 +10,18 @@ var setCharacterLimit = function () {
   }
 };
 
+
 var declareOtherCriteria = function() {
   criteria.lowerCase = window.confirm("Do you want a Lower Case password?");
   criteria.upperCase = window.confirm("Do you want a Upper Case password?");
   criteria.numbers = window.confirm("Do you want Numbers in your password?");
   criteria.specialCharacters = window.confirm("Do you want Special Characters in your password?");
-  if (criteria.promptConfirm) {
-    setCharacterLimit();
-    declareOtherCriteria();
+  if (criteria.lowerCase === false && criteria.upperCase === false && criteria.numbers === false && criteria.specialCharacters === false) {
+      window.alert("Please set at least (1) criteria for the password!\n[Lower Case, Upper Case, Numbers, or Special Characters]");
+      declareOtherCriteria();
   } else {
+  window.alert("Generating your new password now!");
+  }
 }
 
 var promptCriteria = function () {
