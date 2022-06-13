@@ -29,5 +29,6 @@ THEN the password is either displayed in an alert or written to the page
 ![mokup](https://user-images.githubusercontent.com/95842420/173277748-57a3a6ec-a26d-4e7d-ac4b-d3ef9b1f3bf0.png)
 
 # GitHub:
+https://github.com/olivialammam/password-generator
 
 # Live URL:
