@@ -26,6 +26,15 @@ var randomCharacter = function (charactersProperty) {
   return randomPickedCharacter;
 };
 
+var setCharacterLimit = function () {
+  criteria.characterLimit = window.prompt("What's your desired character limit?\n[Length must be at least 8 characters but no more than 128 characters]");
+  criteria.characterLimit = Number(criteria.characterLimit);
+  if (typeof criteria.characterLimit === typeof 0 && criteria.characterLimit >= 8 && criteria.characterLimit <= 128) {
+    typeof criteria.characterLimit
+    setCharacterLimit();
+  }
+};
+
 
 
 // Get references to the #generate element
