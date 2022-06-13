@@ -42,6 +42,10 @@ var declareOtherCriteria = function() {
   criteria.upperCase = window.confirm("Do you want a Upper Case password?");
   criteria.numbers = window.confirm("Do you want Numbers in your password?");
   criteria.specialCharacters = window.confirm("Do you want Special Characters in your password?");
+  if (criteria.promptConfirm) {
+    setCharacterLimit();
+    declareOtherCriteria();
+  } else {
 }
 
 var promptCriteria = function () {
